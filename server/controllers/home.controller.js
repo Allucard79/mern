@@ -1,5 +1,4 @@
-import Home from '../models/home';
 
-export function getSomething(req, res) {
+export function getSomething(res) {
   return res.status(200).end();
 }

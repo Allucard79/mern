@@ -28,7 +28,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
         });
       }}
@@ -36,7 +36,7 @@ export default (
     <Route
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
         });
       }}
@@ -44,7 +44,7 @@ export default (
     <Route
       path="/home"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/Home/Home').default);
         });
       }}
@@ -52,7 +52,7 @@ export default (
     <Route
       path="/about"
       getComponent={(nextState, cb) => {
-        require.ensure([], require => {
+        require.ensure([], (require) => {
           cb(null, require('./modules/About/About').default);
         });
       }}

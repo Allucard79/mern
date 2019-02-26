@@ -10,13 +10,20 @@ function PostListItem(props) {
   return (
     <div className={styles['single-post']}>
       <h3 className={styles['post-title']}>
-        <Link to={`/posts/${props.post.slug}-${props.post.cuid}`} >
+        <Link to={`/posts/${props.post.slug}-${props.post.cuid}`}>
           {props.post.title}
         </Link>
       </h3>
-      <p className={styles['author-name']}><FormattedMessage id="by" /> {props.post.name}</p>
+      <p className={styles['author-name']}>
+        <FormattedMessage id="by" />
+        {' '}
+        {props.post.name}
+      </p>
       <p className={styles['post-desc']}>{props.post.content}</p>
-      <p className={styles['post-desc']}>Votes: <span>{props.post.voteCount}</span></p>
+      <p className={styles['post-desc']}>
+Votes:
+        <span>{props.post.voteCount}</span>
+      </p>
       <div className={styles['post-action_main']}>
         <span className={styles['post-action_negative']}><a href="#" onClick={props.onDelete}><FormattedMessage id="deletePost" /></a></span>
         <span className={styles['post-action_positive']}><a href="#" onClick={props.onVoteUp}><FormattedMessage id="thumbUpPost" /></a></span>
@@ -34,8 +41,11 @@ PostListItem.propTypes = {
     content: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
+    voteCount: PropTypes.number.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
+  onVoteUp: PropTypes.func.isRequired,
+  onVoteDown: PropTypes.func.isRequired,
 };
 
 export default PostListItem;

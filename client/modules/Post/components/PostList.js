@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Import Components
 import PostListItem from './PostListItem/PostListItem';
 
-function PostList(props) { 
+function PostList(props) {
   return (
     <div className="listView">
       {
@@ -31,6 +31,7 @@ PostList.propTypes = {
     cuid: PropTypes.string.isRequired,
   })).isRequired,
   handleDeletePost: PropTypes.func.isRequired,
+  handleThumbDownPost: PropTypes.func.isRequired,
 };
 
 export default PostList;

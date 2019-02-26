@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
@@ -55,22 +55,25 @@ export class PostDetailPage extends React.Component {
     return (
       <div className={`${styles['single-post']} ${styles['post-detail']}`}>
         <h3 className={styles['post-title']}>{this.props.post.title}</h3>
-        <p className={styles['author-name']}><FormattedMessage id="by" /> {this.props.post.name}</p>
+        <p className={styles['author-name']}>
+          <FormattedMessage id="by" />
+          {' '}
+          {this.props.post.name}
+        </p>
         <p className={styles['post-desc']}>{this.props.post.content}</p>
       </div>
     );
   };
 
   render() {
-    const { props } = this;
     return (
       <div>
         <Helmet title={this.props.post.title} />
         <a className={styles['edit-post-button']} href="#" onClick={this.props.toggleEditPost}><FormattedMessage id="editPost" /></a>
         {
           this.props.showEditPost
-          ? this.renderPostForm()
-          : this.renderPost()
+            ? this.renderPostForm()
+            : this.renderPost()
         }
       </div>
     );
@@ -78,14 +81,14 @@ export class PostDetailPage extends React.Component {
 }
 
 // Actions required to provide data for this component to render in server side.
-PostDetailPage.need = [params => {
+PostDetailPage.need = [(params) => {
   return fetchPost(params.cuid);
 }];
 
 function mapDispatchToProps(dispatch, props) {
   return {
     toggleEditPost: () => dispatch(toggleEditPost()),
-    editPostRequest: (post) => dispatch(editPostRequest(props.params.cuid, post)),
+    editPostRequest: post => dispatch(editPostRequest(props.params.cuid, post)),
   };
 }
 
